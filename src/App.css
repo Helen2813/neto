@@ -1,0 +1,11 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    padding: 100px;
+    background-image: radial-gradient(circle at 100% 0, #007cba, #1e3269 43%);
+    height: 100vh;
+}
