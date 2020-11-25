@@ -1,31 +1,22 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import { connect } from 'react-redux';
 import { Table as AntTable } from 'antd';
+import { addNameToChecked } from '../../redux/actions';
+import Summary from '../Summary/Summary'
 import './style.css';
 
-const rowSelection = {
+const Table = (props) => {
+  const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      props.addNameToChecked(selectedRowKeys)
     },
-};
+  };
 
-export const Table = ({
-                          columns,
-                          data,
-                          summaryData,
-}) => {
-    const renderSummary = () => {
-        return (
-            <AntTable.Summary.Row className="table-footer">
-                <AntTable.Summary.Cell index={0}>
-                    Checked:
-                </AntTable.Summary.Cell>
-                <AntTable.Summary.Cell index={1}>
-                    Бла
-                </AntTable.Summary.Cell>
-            </AntTable.Summary.Row>
-        );
-    };
+  const renderSummary = () => {
+    return <Summary />
+  }
 
     return (
         <AntTable
@@ -33,9 +24,22 @@ export const Table = ({
                 type: 'checkbox',
                 ...rowSelection,
             }}
-            columns={columns}
-            dataSource={data}
-            summary={summaryData && renderSummary}
+            columns={props.columns}
+            dataSource={props.data}
+            summary={renderSummary}
         />
     );
 };
+
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    data: state.data.tableData
+  }
+};
+
+const mapDispatchToProps = {
+  addNameToChecked
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

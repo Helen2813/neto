@@ -1,0 +1,1 @@
+export const ADD_CHECKED_NAMES = 'ADD_CHECKED_NAMES';

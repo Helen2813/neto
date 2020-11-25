@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import { usersReducer } from './usersReducer';
+import { checkedNamesReducer } from "./checkedNamesReduser";
+import { tableDataReducer } from './tableDataReducer';
 
 export const rootReduser = combineReducers({
-    users: usersReducer
+    data: tableDataReducer,
+    checked: checkedNamesReducer
 });
