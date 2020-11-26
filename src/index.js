@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { compose, createStore, applyMiddleware } from "redux";
-import thunk from 'redux-thunk';
-import { rootReduser } from "./redux/rootReduser";
 import { Provider } from 'react-redux';
+import { applyMiddleware, compose, createStore } from "redux";
+import thunk from 'redux-thunk';
+import App from './App';
+import './index.css';
+import { rootReduser } from "./redux/rootReduser";
+import reportWebVitals from './reportWebVitals';
 
 
 const store = createStore(rootReduser, compose(
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 ));
 
 ReactDOM.render(

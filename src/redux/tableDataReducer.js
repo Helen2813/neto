@@ -1,15 +1,11 @@
-import { FETCH_DATA, SAVE_TABLE_DATA } from './types';
+import { SAVE_TABLE_DATA } from './types';
 
-const initialState = { tableData: [], fetchedData: [] };
+const initialState = { tableData: [] };
 
 export const tableDataReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FETCH_DATA:
-      return { ...state, fetchedData: action.payload }
-    
     case SAVE_TABLE_DATA:
       return { ...state, tableData: action.payload }
-
     default: return state;
   }
 };

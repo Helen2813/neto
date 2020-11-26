@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import 'antd/dist/antd.css';
-import { connect, useDispatch } from 'react-redux';
 import { Table as AntTable } from 'antd';
-import { addNameToChecked, fetchData, saveTableData } from '../../redux/actions';
+import 'antd/dist/antd.css';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { addNameToChecked, fetchData } from '../../redux/actions';
 import Summary from '../Summary/Summary';
-import { getNormalaixedDataToTable } from './getNormalaizedDataToTable';
-import './style.css';
 
 const Table = (props) => {
   const rowSelection = {
@@ -16,38 +14,32 @@ const Table = (props) => {
 
   const renderSummary = () => <Summary />
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchData());
-    const tableData = getNormalaixedDataToTable(props.data);
-    props.saveTableData(tableData);
+    props.fetchData();
   }, [])
 
-    return (
-        <AntTable
-            rowSelection={{
-                type: 'checkbox',
-                ...rowSelection,
-            }}
-            columns={props.columns}
-            dataSource={getNormalaixedDataToTable(props.data)}
-            summary={renderSummary}
-        />
-    );
+  return (
+    <AntTable
+      rowSelection={{
+        type: 'checkbox',
+        ...rowSelection,
+      }}
+      columns={props.columns}
+      dataSource={props.tableData}
+      summary={renderSummary}
+    />
+  );
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    data: state.data.fetchedData,
     tableData: state.data.tableData
   }
 };
 
 const mapDispatchToProps = {
   addNameToChecked,
-  saveTableData
+  fetchData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

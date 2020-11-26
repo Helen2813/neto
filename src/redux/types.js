@@ -1,5 +1,2 @@
 export const ADD_CHECKED_NAMES = 'ADD_CHECKED_NAMES';
-export const FETCH_DATA = 'FETCH_DATA';
 export const SAVE_TABLE_DATA = 'SAVE_TABLE_DATA';
-export const SHOW_LOADER = 'SHOW_LOADER';
-export const HIDE_LOADER = 'HIDE_LOADER';
