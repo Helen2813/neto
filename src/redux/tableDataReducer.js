@@ -1,31 +1,15 @@
-const data = [
-  {
-      key: '1',
-      name: 'John',
-      surname: 'Brown',
-      age: 32,
-  },
-  {
-      key: '2',
-      name: 'Jim',
-      surname: 'Green',
-      age: 12,
-  },
-  {
-      key: '3',
-      name: 'Joe',
-      surname: 'Black',
-      age: 62,
-  },
-  {
-      key: '4',
-      name: 'Jack',
-      surname: 'Brown',
-      age: 42,
-  },
-];
-const initialState = { tableData: data };
+import { FETCH_DATA, SAVE_TABLE_DATA } from './types';
+
+const initialState = { tableData: [], fetchedData: [] };
 
 export const tableDataReducer = (state = initialState, action) => {
-  return state
+  switch(action.type) {
+    case FETCH_DATA:
+      return { ...state, fetchedData: action.payload }
+    
+    case SAVE_TABLE_DATA:
+      return { ...state, tableData: action.payload }
+
+    default: return state;
+  }
 };
