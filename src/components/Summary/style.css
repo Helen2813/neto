@@ -1,4 +1,43 @@
-.ant-table-summary {
+.table-footer {
   font-weight: 700;
-  width: 100%;
+  height: 55px;
+}
+
+.table-footer__cell {
+  position: relative;
+}
+
+.table-footer__names {
+  position: absolute;
+  left: 30px;
+  top: 16px;
+  max-width: 100%;
+}
+
+.table-footer__title {
+  position: absolute;
+  left: 22px;
+  top: 16px;
+}
+
+@media (min-width: 860px) and (max-width: 1025px) {
+  .table-footer {
+    height: 72px;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 859px) {
+  .table-footer {
+    height: 72px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 519px) {
+  .table-footer {
+    height: 140px;
+  }
+
+  .table-footer__title {
+    left: 12px;
+  }
 }

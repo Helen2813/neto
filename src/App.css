@@ -9,3 +9,9 @@ body {
   background-image: radial-gradient(circle at 100% 0, #007cba, #1e3269 43%);
   min-height: 100vh;
 }
+
+@media (min-width: 320px) and (max-width: 700px) {
+  .container {
+    padding: 10px;
+  }
+}

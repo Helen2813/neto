@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table as AntTable } from 'antd';
-
+import './style.css';
 
 const Summary = (props) => {
   const getCheckedNames = () => {
@@ -17,8 +17,14 @@ const Summary = (props) => {
 
   return (
     <AntTable.Summary.Row className="table-footer">
-      <AntTable.Summary.Cell index={0}>Checked:</AntTable.Summary.Cell>
-      <AntTable.Summary.Cell index={1}>{getCheckedNames()}</AntTable.Summary.Cell>
+      <AntTable.Summary.Cell index={0} className="table-footer__cell">
+      <span className="table-footer__title">Checked:</span>
+        </AntTable.Summary.Cell>
+      <AntTable.Summary.Cell index={1} className="table-footer__cell">
+        <span className="table-footer__names">
+          {getCheckedNames()}
+        </span>
+        </AntTable.Summary.Cell>
     </AntTable.Summary.Row>
   )
 }

@@ -4,7 +4,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-export const getNormalaixedDataToTable = (data) => {
+export const getNormalaizedDataToTable = (data) => {
   const resultData = [];
 
   data.forEach(person => {
